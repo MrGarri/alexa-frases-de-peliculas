@@ -2,31 +2,30 @@ package repeat.handlers;
 
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
-import com.amazon.ask.model.Response;
 import com.amazon.ask.request.Predicates;
-import repeat.Quote;
-import repeat.QuoteService;
-import repeat.QuotesStreamHandler;
+import repeat.Response;
+import repeat.ResponseService;
+import repeat.ResponseStreamHandler;
 
 import java.util.Optional;
 
-public class QuoteRequestHandler implements RequestHandler {
+public class RepeatRequestHandler implements RequestHandler {
 
     @Override
     public boolean canHandle(HandlerInput input) {
-        return input.matches(Predicates.intentName("QuoteIntent"));
+        return input.matches(Predicates.intentName("RepeatIntent"));
     }
 
     @Override
-    public Optional<Response> handle(HandlerInput input) {
-        Quote q = QuoteService.randomQuote();
-        System.out.println("Quoute -> " + q);
+    public Optional<com.amazon.ask.model.Response> handle(HandlerInput input) {
+        Response r = ResponseService.getResponse(input);
 
-        String speechText = "Aquí tienes una frase famosa de la película \"" + q.getMovie() + "\": \"" + q.getText() + "\".";
+        String speechText = r.getResponse();
         return input.getResponseBuilder()
                 .withSpeech(speechText)
-                .withSimpleCard(QuotesStreamHandler.SKILL_TITLE, speechText)
+                .withSimpleCard(ResponseStreamHandler.SKILL_TITLE, speechText)
                 .withShouldEndSession(true)
+
                 .build();
     }
 }
