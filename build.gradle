@@ -15,7 +15,7 @@ apply plugin: 'java'
 apply plugin: 'com.github.johnrengelman.shadow'
 apply plugin: 'jp.classmethod.aws.lambda'
 
-group = 'quotes'
+group = 'repeat'
 version = '1.0'
 
 compileJava {
@@ -48,9 +48,9 @@ aws {
 }
 
 task deploy(type: AWSLambdaMigrateFunctionTask, dependsOn: build) {
-    functionName = "alexa-frases-peliculas"
-    handler = "quotes.QuotesStreamHandler"
-    role = "arn:aws:iam::${aws.accountId}:role/lambda_basic_execution"
+    functionName = "repiteLaFrase"
+    handler = "repeat.ResponseStreamHandler"
+//    role = "arn:aws:iam::${aws.accountId}:role/repiteLaFrase"
     runtime = Runtime.Java8
     zipFile = shadowJar.archivePath
     memorySize = 512
