@@ -1,4 +1,4 @@
-package quotes.handlers;
+package repeat.handlers;
 
 import static com.amazon.ask.request.Predicates.requestType;
 
@@ -6,7 +6,7 @@ import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.LaunchRequest;
 import com.amazon.ask.model.Response;
-import quotes.QuotesStreamHandler;
+import repeat.ResponseStreamHandler;
 
 import java.util.Optional;
 
@@ -20,9 +20,9 @@ public class LaunchRequestHandler implements RequestHandler {
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
-        String speechText = "Bienvenido a \"Frases famosas de películas\". Me puedes pedir una frase famosa.";
+        String speechText = "Bienvenido a \"Repite la frase\". Me puedes decir la frase que quieras y la repetiré";
         return input.getResponseBuilder()
-                .withSimpleCard(QuotesStreamHandler.SKILL_TITLE, speechText)
+                .withSimpleCard(ResponseStreamHandler.SKILL_TITLE, speechText)
                 .withSpeech(speechText)
                 .withReprompt(speechText)
                 .build();
