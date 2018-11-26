@@ -1,35 +1,24 @@
 package repeat;
 
-public class Quote {
-    private String movie;
-    private String text;
+public class Response {
+    private String response;
 
-    public Quote(String movie, String text) {
-        this.movie = movie;
-        this.text = text;
+    public Response(String response) {
+        this.response = response;
     }
 
-    public String getMovie() {
-        return movie;
+    public String getResponse() {
+        return response;
     }
 
-    public void setMovie(String movie) {
-        this.movie = movie;
-    }
-
-    public String getText() {
-        return text;
-    }
-
-    public void setText(String text) {
-        this.text = text;
+    public void setResponse(String response) {
+        this.response = response;
     }
 
     @Override
     public String toString() {
-        return "Quote{" +
-            "movie='" + movie + '\'' +
-            ", text='" + text + '\'' +
+        return "Response{" +
+            "response='" + response + '\'' +
             '}';
     }
 }
