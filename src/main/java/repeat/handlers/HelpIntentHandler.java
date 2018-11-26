@@ -1,11 +1,11 @@
-package quotes.handlers;
+package repeat.handlers;
 
 import static com.amazon.ask.request.Predicates.intentName;
 
 import com.amazon.ask.dispatcher.request.handler.HandlerInput;
 import com.amazon.ask.dispatcher.request.handler.RequestHandler;
 import com.amazon.ask.model.Response;
-import quotes.QuotesStreamHandler;
+import repeat.ResponseStreamHandler;
 
 import java.util.Optional;
 
@@ -18,11 +18,11 @@ public class HelpIntentHandler implements RequestHandler {
 
     @Override
     public Optional<Response> handle(HandlerInput input) {
-        String speechText = "Me puedes pedir una frase famosa de una película.";
+        String speechText = "Me puedes decir lo que quieras y lo repetiré tal y como tú me lo has dicho";
 
         return input.getResponseBuilder()
                 .withSpeech(speechText)
-                .withSimpleCard(QuotesStreamHandler.SKILL_TITLE, speechText)
+                .withSimpleCard(ResponseStreamHandler.SKILL_TITLE, speechText)
                 .withReprompt(speechText)
                 .build();
     }
