@@ -1,13 +1,12 @@
-package quotes;
+package repeat;
 
 import com.amazon.ask.Skill;
 import com.amazon.ask.SkillStreamHandler;
 import com.amazon.ask.Skills;
-import quotes.handlers.CancelandStopIntentHandler;
-import quotes.handlers.HelpIntentHandler;
-import quotes.handlers.LaunchRequestHandler;
-import quotes.handlers.QuoteRequestHandler;
-import quotes.handlers.SessionEndedRequestHandler;
+import repeat.handlers.HelpIntentHandler;
+import repeat.handlers.LaunchRequestHandler;
+import repeat.handlers.QuoteRequestHandler;
+import repeat.handlers.SessionEndedRequestHandler;
 
 public class QuotesStreamHandler extends SkillStreamHandler {
 
@@ -18,7 +17,6 @@ public class QuotesStreamHandler extends SkillStreamHandler {
                 .standard()
                 .addRequestHandlers(
                         new LaunchRequestHandler(),
-                        new CancelandStopIntentHandler(),
                         new SessionEndedRequestHandler(),
                         new HelpIntentHandler(),
                         new QuoteRequestHandler()

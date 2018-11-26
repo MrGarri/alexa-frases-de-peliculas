@@ -1,4 +1,4 @@
-package quotes;
+package repeat;
 
 public class Quote {
     private String movie;
